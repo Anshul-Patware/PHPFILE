@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+body {
+  background-image: url("img3.jpg"); 
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+    background-size: 100% 100%;
+
+} 
+</style>
+</head>
+
+<body>
+<div class="wrapper">
+    <form action="#" id="Login" class="Login">
+      <h2>Login</h2>
+      <div class="input-container">
+        <i class="fa fa-envelope icon" aria-hidden="true"></i>
+        <input type="email" class="email" id="email"  required>
+        <label>Enter your email</label>
+      </div>
+      
+      <div class="input-container"> 
+        <i class="fa fa-key icon" aria-hidden="true"></i>
+        <input type="password" class="password" id="password" required>   
+        <label>Enter your password</label>
+      </div>
+      <div class="fget">
+        <label for="remember">
+          <input type="checkbox" class="remember">
+          <p>Remember me</p>
+        </label>
+        <a href="/ram/forget.html#">Forgot password?</a>
+      </div>
+      <button type="submit" id="log" onclick="goToURL()">Log in</button>
+      <div class="register">
+        <p>Don have an account? <a href="/ram/signup.html#">Register</a></p>
+      </div>
+    </form>
+  </div>
+</body>
+  </html>
+  <script>
+    
+    document.addEventListener("DOMContentLoaded", function() {
+    var loginForm = document.getElementById("Login");
+    var usernameInput = document.getElementById("email");
+    var passwordInput = document.getElementById("password");
+    var loginButton = document.getElementById("log");
+
+    loginButton.addEventListener("click", function() {
+        if (usernameInput.value.trim() === '' || passwordInput.value.trim() === '') {
+            alert("Please fill in all the fields before logging in.");
+        } else {
+            window.open("index.html", "_self"); 
+        }
+    });
+});
+</script>
+

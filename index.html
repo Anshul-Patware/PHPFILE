@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQ Quiz</title>
+</head>
+<body>
+    <div id="login-container">
+        <h2>Login</h2>
+        <form id="login-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <div id="homepage" style="display: none;">
+        <h2>MCQ Quiz</h2>
+        <div id="quiz-container">
+            <form id="quiz-form">
+                <div class="question">
+                    <p>1. What is the capital of France?</p>
+                    <label><input type="radio" name="q1" value="Paris"> Paris</label><br>
+                    <label><input type="radio" name="q1" value="London"> London</label><br>
+                    <label><input type="radio" name="q1" value="Rome"> Rome</label>
+                </div>
+                <div class="question">
+                    <p>2. What is 2 + 2?</p>
+                    <label><input type="radio" name="q2" value="3"> 3</label><br>
+                    <label><input type="radio" name="q2" value="4"> 4</label><br>
+                    <label><input type="radio" name="q2" value="5"> 5</label>
+                </div>
+                <div class="question">
+                    <p>3. What is the color of the sky?</p>
+                    <label><input type="radio" name="q3" value="Blue"> Blue</label><br>
+                    <label><input type="radio" name="q3" value="Green"> Green</label><br>
+                    <label><input type="radio" name="q3" value="Red"> Red</label>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+            <div id="result" style="display: none;">
+                <h3>Congratulations! You answered all questions correctly!</h3>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+#login-container, #homepage {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+</style>
+
+</body>
+</html>
+<script>
+   document.getElementById('login-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    document.getElementById('login-container').style.display = 'none';
+    document.getElementById('homepage').style.display = 'block';
+});
+
+document.getElementById('quiz-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const answers = {
+        q1: 'Paris',
+        q2: '4',
+        q3: 'Blue'
+    };
+
+    let correct = true;
+
+    for (let [question, answer] of Object.entries(answers)) {
+        const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+        if (!selectedOption || selectedOption.value !== answer) {
+            correct = false;
+            break;
+        }
+    }
+
+    if (correct) {
+        document.getElementById('result').style.display = 'block';
+    }
+});
+ 
+</script>
